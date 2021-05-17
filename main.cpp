@@ -8,6 +8,8 @@
 #include "algorithm_interface.h"
 #include "bubble_sort.h"
 #include "selection_sort.h"
+#include "insertion_sort.h"
+#include "shell_sort.h"
 
 std::vector<int> nums;
 std::vector<std::shared_ptr<algorithm_ns::AlgorithmInterface>> algorithms_ptr;
@@ -25,6 +27,8 @@ int main()
 
     algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::BubbleSort>("BubbleSort", nums));
     algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::SelectionSort>("SelectionSort", nums));
+    algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::InsertionSort>("InsertionSort", nums));
+    algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::ShellSort>("ShellSort", nums));
 
     for (auto &alg : algorithms_ptr)
     {

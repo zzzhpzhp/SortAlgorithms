@@ -7,4 +7,4 @@ add_executable(SortAlgorithm
         main.cpp
         bubble_sort.cpp
         selection_sort.cpp
-        )
+        insertion_sort.cpp insertion_sort.h shell_sort.cpp shell_sort.h)
