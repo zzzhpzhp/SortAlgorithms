@@ -7,4 +7,6 @@ add_executable(SortAlgorithm
         main.cpp
         bubble_sort.cpp
         selection_sort.cpp
-        insertion_sort.cpp insertion_sort.h shell_sort.cpp shell_sort.h)
+        insertion_sort.cpp insertion_sort.h shell_sort.cpp shell_sort.h merge_sort.cpp merge_sort.h)
+
+target_link_libraries(SortAlgorithm pthread)
