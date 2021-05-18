@@ -6,25 +6,24 @@
 #include <chrono>
 #include <functional>
 
-
-#include "algorithm_interface.h"
+#include "shell_sort.h"
+#include "merge_sort.h"
 #include "bubble_sort.h"
 #include "selection_sort.h"
 #include "insertion_sort.h"
-#include "shell_sort.h"
-#include "merge_sort.h"
+#include "algorithm_interface.h"
 
 std::vector<int> nums;
 std::vector<std::shared_ptr<algorithm_ns::AlgorithmInterface>> algorithms_ptr;
 
-int size = 1000;
+int size = 10000;
 int range = 100000;
 
 void
 sort(std::shared_ptr<algorithm_ns::AlgorithmInterface> alg)
 {
-    std::cout << alg->getName() << std::endl;
     alg->sort();
+    std::cout << alg->getName() << std::endl;
     alg->printNums();
     alg->check();
 }

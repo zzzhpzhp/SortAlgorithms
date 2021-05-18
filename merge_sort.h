@@ -17,7 +17,7 @@ namespace algorithm_ns
         sort() override;
 
     private:
-        void
+        std::vector<int>
         _sort(int l, int r);
     };
 }
