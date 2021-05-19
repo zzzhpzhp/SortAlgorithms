@@ -11,20 +11,28 @@
 #include "bubble_sort.h"
 #include "selection_sort.h"
 #include "insertion_sort.h"
+#include "quick_sort.h"
 #include "algorithm_interface.h"
 
 std::vector<int> nums;
 std::vector<std::shared_ptr<algorithm_ns::AlgorithmInterface>> algorithms_ptr;
 
-int size = 10000;
+const bool print_random_numbers = false;
+const bool print_sorted_numbers = false;
+int size = 100000;
 int range = 100000;
 
 void
 sort(std::shared_ptr<algorithm_ns::AlgorithmInterface> alg)
 {
+    auto stamp = clock();
     alg->sort();
     std::cout << alg->getName() << std::endl;
-    alg->printNums();
+    std::cout << "Time consume: " << (double)(clock() - stamp) / CLOCKS_PER_SEC << std::endl;
+    if (print_sorted_numbers)
+    {
+        alg->printNums();
+    }
     alg->check();
 }
 
@@ -38,7 +46,10 @@ int main()
     {
         auto rd_num = rd() % range;
         nums.emplace_back(rd_num);
-        std::cout << rd_num << " ";
+        if (print_random_numbers)
+        {
+            std::cout << rd_num << " ";
+        }
     }
     std::cout << std::endl;
 
@@ -47,6 +58,7 @@ int main()
     algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::InsertionSort>("InsertionSort", nums));
     algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::ShellSort>("ShellSort", nums));
     algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::MergeSort>("MergeSort", nums));
+    algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::QuickSort>("QuickSort", nums));
 
     std::vector<std::shared_ptr<std::thread>> threads;
     for (auto &alg : algorithms_ptr)
