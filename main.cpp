@@ -6,13 +6,14 @@
 #include <chrono>
 #include <functional>
 
+#include "algorithm_interface.h"
 #include "shell_sort.h"
 #include "merge_sort.h"
 #include "bubble_sort.h"
 #include "selection_sort.h"
 #include "insertion_sort.h"
 #include "quick_sort.h"
-#include "algorithm_interface.h"
+#include "heap_sort.h"
 
 std::vector<int> nums;
 std::vector<std::shared_ptr<algorithm_ns::AlgorithmInterface>> algorithms_ptr;
@@ -59,6 +60,7 @@ int main()
     algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::ShellSort>("ShellSort", nums));
     algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::MergeSort>("MergeSort", nums));
     algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::QuickSort>("QuickSort", nums));
+    algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::HeapSort>("HeapSort", nums));
 
     std::vector<std::shared_ptr<std::thread>> threads;
     for (auto &alg : algorithms_ptr)
