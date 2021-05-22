@@ -28,11 +28,14 @@ namespace algorithm_ns
         sort() override;
 
     private:
-        std::shared_ptr<Heap> heap_;
-        void _create_heap(std::shared_ptr<Heap> &p, int i);
-        std::shared_ptr<Heap> _sort(std::shared_ptr<Heap>& h);
-        void _print_heap(std::shared_ptr<Heap> &h);
-        int _i = 0;
+
+        int end_index_ = 0;
+
+        void
+        _heap_init();
+
+        void
+        _heap_adjust(int i);
     };
 }
 

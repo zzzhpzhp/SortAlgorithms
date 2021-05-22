@@ -8,72 +8,49 @@ namespace algorithm_ns
         {
             return;
         }
-        heap_ = std::make_shared<Heap>(nums_.front());
-        std::shared_ptr<Heap> p;
-        for (int i = 1; i < nums_.size(); i++)
-        {
-            p = heap_;
-            auto v = nums_[i];
-            while (p)
-            {
-                if (v > p->val)
-                {
-                    if (!p->right)
-                    {
-                        p->right = std::make_shared<Heap>(v);
-                        break;
-                    }
-                    p = p->right;
-                }
-                else
-                {
-                    if (!p->left)
-                    {
-                        p->left = std::make_shared<Heap>(v);
-                        break;
-                    }
-                    p = p->left;
-                }
-            }
-        }
-        _print_heap(heap_);
-    }
 
-    std::shared_ptr<Heap>
-    HeapSort::_sort(std::shared_ptr<Heap>& h)
-    {
-        return nullptr;
-    }
+        end_index_ = nums_.size();
+        _heap_init();
 
-    void HeapSort::_create_heap(std::shared_ptr<Heap> &p, int i)
-    {
-        auto v = nums_[i];
-        p = std::make_shared<Heap>(v);
-        i++;
-        std::cout << i << " \n";
-        if (i < nums_.size())
+        while(end_index_ != 1)
         {
-            auto t = nums_[i];
-            if (t > v)
-            {
-                _create_heap(p->right, i);
-            }
-            else
-            {
-                _create_heap(p->left, i);
-            }
+            std::swap(nums_[0], nums_[end_index_-1]);
+            end_index_--;
+            _heap_adjust(0);
         }
     }
 
-    void HeapSort::_print_heap(std::shared_ptr<Heap> &h)
+    void
+    HeapSort::_heap_adjust(int i)
     {
-        if (!h)
+        auto left_child = 2 * i + 1;
+        auto right_child = 2 * i + 2;
+
+        int max_index = i;
+
+        if (left_child < end_index_ && nums_[left_child] > nums_[max_index])
         {
-            return;
+            max_index = left_child;
         }
-        _print_heap(h->left);
-        nums_[_i++] = h->val;
-//        std::cout << h->val << " ";
-        _print_heap(h->right);
+
+        if (right_child < end_index_ && nums_[right_child] > nums_[max_index])
+        {
+            max_index = right_child;
+        }
+
+        if (max_index != i)
+        {
+            std::swap(nums_[i], nums_[max_index]);
+            _heap_adjust(max_index);
+        }
+    }
+
+    void
+    HeapSort::_heap_init()
+    {
+        for (int i = nums_.size() / 2; i >= 0; i--)
+        {
+            _heap_adjust(i);
+        }
     }
 }
