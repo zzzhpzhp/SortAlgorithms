@@ -6,16 +6,6 @@
 
 namespace algorithm_ns
 {
-    struct Heap
-    {
-        explicit Heap(int v)
-        {
-            val = v;
-        }
-        int val;
-        std::shared_ptr<Heap> left, right;
-    };
-
     class HeapSort : public AlgorithmInterface
     {
     public:
