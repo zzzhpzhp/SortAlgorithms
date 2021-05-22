@@ -18,8 +18,8 @@ namespace algorithm_ns
 
     private:
 
-        std::vector<int>
-        _sort(int l, int h, const std::vector<int> &tnums);
+        void
+        _sort(int l, int h);
     };
 }
 
