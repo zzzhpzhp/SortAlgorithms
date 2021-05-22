@@ -4,6 +4,8 @@ namespace algorithm_ns
 {
     void CountingSort::sort()
     {
+        bucket_.reserve(nums_.size());
+
         for (const auto& n : nums_)
         {
             bucket_[n]++;
