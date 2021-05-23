@@ -1,5 +1,5 @@
 #include "merge_sort.h"
-#include <stack>
+
 namespace algorithm_ns
 {
     void MergeSort::sort()
