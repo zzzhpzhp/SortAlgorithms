@@ -14,35 +14,48 @@
 #include "insertion_sort.h"
 #include "quick_sort.h"
 #include "heap_sort.h"
+#include "counting_sort.h"
+#include "bucket_sort.h"
+#include "radix_sort.h"
 
 std::vector<int> nums;
 std::vector<std::shared_ptr<algorithm_ns::AlgorithmInterface>> algorithms_ptr;
 
-const bool print_random_numbers = false;
-const bool print_sorted_numbers = false;
-int size = 100000;
-int range = 100000;
+constexpr const bool print_random_numbers = false;
+constexpr const bool print_sorted_numbers = false;
+constexpr const int size = 10000;
+constexpr const int range = size;
 
 void
-sort(std::shared_ptr<algorithm_ns::AlgorithmInterface> alg)
+sort(const std::shared_ptr<algorithm_ns::AlgorithmInterface> &alg)
 {
     auto stamp = clock();
     alg->sort();
-    std::cout << alg->getName() << std::endl;
+    std::cout << alg->getName() << " finished"<< std::endl << std::flush;
     std::cout << "Time consume: " << (double)(clock() - stamp) / CLOCKS_PER_SEC << std::endl;
     if (print_sorted_numbers)
     {
         alg->printNums();
     }
+    std::cout << std::endl << std::flush;
     alg->check();
 }
 
 int main()
 {
+    if (range <= 0)
+    {
+        std::cout << "Number range should greater than 0." << std::endl;
+        return 0;
+    }
+    std::cout << "Sorting " << size << " random numbers with range 0-" << (range - 1) << " ..." << std::endl;
     std::default_random_engine rd;
     rd.seed(time(0));
 
-    std::cout << "Random number size: " << size << ", origin numbers: " << std::endl;
+    if (print_random_numbers)
+    {
+        std::cout << "Random number size: " << size << ", origin numbers: " << std::endl;
+    }
     for (int i = 0; i < size; i++)
     {
         auto rd_num = rd() % range;
@@ -61,8 +74,12 @@ int main()
     algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::MergeSort>("MergeSort", nums));
     algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::QuickSort>("QuickSort", nums));
     algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::HeapSort>("HeapSort", nums));
+    algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::CountingSort>("CountingSort", nums));
+    algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::BucketSort>("BucketSort", nums));
+    algorithms_ptr.emplace_back(std::make_shared<algorithm_ns::RadixSort>("RadixSort", nums));
 
     std::vector<std::shared_ptr<std::thread>> threads;
+    threads.reserve(algorithms_ptr.size());
     for (auto &alg : algorithms_ptr)
     {
         threads.push_back(std::make_shared<std::thread>(std::bind(&sort, alg)));
@@ -73,5 +90,6 @@ int main()
         thr->join();
     }
 
+    std::cout << "All finished." << std::endl;
     return 0;
 }
