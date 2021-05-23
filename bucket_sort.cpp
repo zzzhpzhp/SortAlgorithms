@@ -30,7 +30,9 @@ namespace algorithm_ns
                         continue;
                     }
                     if (thr->joinable())
-                    thr->join();
+                    {
+                        thr->join();
+                    }
                 }
             }
         }
@@ -42,7 +44,9 @@ namespace algorithm_ns
                 continue;
             }
             if (thr->joinable())
-            thr->join();
+            {
+                thr->join();
+            }
         }
 
         for (auto & bucket : buckets_)
