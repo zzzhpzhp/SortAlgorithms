@@ -1,5 +1,5 @@
-#ifndef SORTALGORITHM_BUCKET_SORT_H
-#define SORTALGORITHM_BUCKET_SORT_H
+#ifndef SORTALGORITHMS_BUCKET_SORT_H
+#define SORTALGORITHMS_BUCKET_SORT_H
 
 #include "algorithm_interface.h"
 #include <memory>
@@ -41,4 +41,4 @@ namespace algorithm_ns
     };
 }
 
-#endif //SORTALGORITHM_BUCKET_SORT_H
+#endif //SORTALGORITHMS_BUCKET_SORT_H

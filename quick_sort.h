@@ -1,5 +1,5 @@
-#ifndef SORTALGORITHM_QUICK_SORT_H
-#define SORTALGORITHM_QUICK_SORT_H
+#ifndef SORTALGORITHMS_QUICK_SORT_H
+#define SORTALGORITHMS_QUICK_SORT_H
 
 #include "algorithm_interface.h"
 
@@ -23,4 +23,4 @@ namespace algorithm_ns
     };
 }
 
-#endif //SORTALGORITHM_QUICK_SORT_H
+#endif //SORTALGORITHMS_QUICK_SORT_H

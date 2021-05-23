@@ -1,5 +1,5 @@
-#ifndef SORTALGORITHM_SELECTION_SORT_H
-#define SORTALGORITHM_SELECTION_SORT_H
+#ifndef SORTALGORITHMS_SELECTION_SORT_H
+#define SORTALGORITHMS_SELECTION_SORT_H
 
 #include "algorithm_interface.h"
 
@@ -18,4 +18,4 @@ namespace algorithm_ns
     };
 }
 
-#endif //SORTALGORITHM_SELECTION_SORT_H
+#endif //SORTALGORITHMS_SELECTION_SORT_H

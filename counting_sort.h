@@ -1,5 +1,5 @@
-#ifndef SORTALGORITHM_COUNTING_SORT_H
-#define SORTALGORITHM_COUNTING_SORT_H
+#ifndef SORTALGORITHMS_COUNTING_SORT_H
+#define SORTALGORITHMS_COUNTING_SORT_H
 
 #include "algorithm_interface.h"
 
@@ -22,4 +22,4 @@ namespace algorithm_ns
     };
 }
 
-#endif //SORTALGORITHM_COUNTING_SORT_H
+#endif //SORTALGORITHMS_COUNTING_SORT_H

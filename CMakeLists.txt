@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.19)
-project(SortAlgorithm)
+project(SortAlgorithms)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(SortAlgorithm
+add_executable(SortAlgorithms
         main.cpp
         bubble_sort.cpp
         selection_sort.cpp
@@ -17,4 +17,4 @@ add_executable(SortAlgorithm
         radix_sort.cpp
         )
 
-target_link_libraries(SortAlgorithm pthread)
+target_link_libraries(SortAlgorithms pthread)

@@ -1,5 +1,5 @@
-#ifndef SORTALGORITHM_HEAP_SORT_H
-#define SORTALGORITHM_HEAP_SORT_H
+#ifndef SORTALGORITHMS_HEAP_SORT_H
+#define SORTALGORITHMS_HEAP_SORT_H
 
 #include "algorithm_interface.h"
 #include <memory>
@@ -29,4 +29,4 @@ namespace algorithm_ns
     };
 }
 
-#endif //SORTALGORITHM_HEAP_SORT_H
+#endif //SORTALGORITHMS_HEAP_SORT_H
